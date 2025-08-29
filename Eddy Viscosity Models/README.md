@@ -74,9 +74,6 @@ The additional term \$\overline{u\_i' u\_j'}\$ represents the **Reynolds stresse
 * Common approaches include the **k–ε** and **k–ω** turbulence models.
 
 ---
-Here’s a **README-ready rephrasing** of your **Eddy Viscosity Models** section, keeping the structure consistent with what we did earlier for the governing equations:
-
----
 
 ## Eddy Viscosity Models
 
