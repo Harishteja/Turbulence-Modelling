@@ -111,7 +111,7 @@ The **k–ε model** solves two transport equations:
 The turbulent viscosity is computed from $k$ and $\epsilon$:
 
 $$
-\nu_t = C_\mu \frac{k^2}{\epsilon} \tag{11}
+\nu_t = C_\mu \frac{k^2}{\epsilon}
 $$
 
 **Governing equations (fully developed turbulent channel flow):**
@@ -119,28 +119,25 @@ $$
 Momentum (streamwise):
 
 $$
-\frac{\partial}{\partial y}\!\left[(\nu+\nu_t)\frac{\partial U}{\partial y}\right]
--\frac{1}{\rho}\frac{\partial P}{\partial y}=0 \tag{7}
+\frac{\partial}{\partial y}\!\left[(\nu+\nu_t)\frac{\partial U}{\partial y}\right] -\frac{1}{\rho}\frac{\partial P}{\partial y}=0
 $$
 
 Turbulent kinetic energy $(k)$:
 
 $$
-\frac{\partial}{\partial y}\!\left[\left(\nu+\frac{\nu_t}{\sigma_k}\right)\frac{\partial k}{\partial y}\right]
-+ P_k - \epsilon = 0 \tag{8}
+\frac{\partial}{\partial y}\!\left[\left(\nu+\frac{\nu_t}{\sigma_k}\right)\frac{\partial k}{\partial y}\right] + P_k - \epsilon = 0 
 $$
 
 Dissipation rate $(\epsilon)$:
 
 $$
-\frac{\partial}{\partial y}\!\left[\left(\nu+\frac{\nu_t}{\sigma_\epsilon}\right)\frac{\partial \epsilon}{\partial y}\right]
-+ C_1 \frac{\epsilon}{k} P_k - C_2 \frac{\epsilon^2}{k} = 0 \tag{9}
+\frac{\partial}{\partial y}\!\left[\left(\nu+\frac{\nu_t}{\sigma_\epsilon}\right)\frac{\partial \epsilon}{\partial y}\right] + C_1 \frac{\epsilon}{k} P_k - C_2 \frac{\epsilon^2}{k} = 0
 $$
 
 Production term:
 
 $$
-P_k = \nu_t \left(\frac{\partial U}{\partial y}\right)^2 \tag{10}
+P_k = \nu_t \left(\frac{\partial U}{\partial y}\right)^2
 $$
 
 
