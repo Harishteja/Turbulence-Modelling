@@ -140,6 +140,53 @@ $$
 P_k = \nu_t \left(\frac{\partial U}{\partial y}\right)^2
 $$
 
+---
+
+### k–ω Model
+
+The **k–ω model** uses the **specific dissipation rate** (\$\omega\$) instead of \$ε\$:
+
+```math
+\omega = \frac{\epsilon}{\beta^* k}
+```
+
+Turbulent viscosity:
+
+```math
+\nu_t = \frac{k}{\omega} 
+```
+
+**Equations (for fully developed turbulent channel flow):**
+
+Momentum:
+
+```math
+\frac{\partial}{\partial y} \Big[ (\nu + \nu_t) \frac{\partial U}{\partial y} \Big]
+- \frac{1}{\rho} \frac{\partial P}{\partial y} = 0 
+```
+
+Turbulent kinetic energy (\$k\$):
+
+```math
+\frac{\partial}{\partial y} \Big[ \Big(\nu + \frac{\nu_t}{\sigma_k}\Big) \frac{\partial k}{\partial y} \Big]
++ P_k - \beta^* k \omega = 0 
+```
+
+Specific dissipation rate (\$\omega\$):
+
+```math
+\frac{\partial}{\partial y} \Big[ \Big(\nu + \frac{\nu_t}{\sigma_\omega}\Big) \frac{\partial \omega}{\partial y} \Big]
++ \alpha \frac{\omega}{k} P_k - \beta \omega^2 = 0 
+```
+
+Production term:
+
+```math
+P_k = \nu_t \left( \frac{\partial U}{\partial y} \right)^2 
+```
+
+---
+
 
 
 
