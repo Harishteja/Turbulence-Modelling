@@ -187,6 +187,129 @@ P_k = \nu_t \left( \frac{\partial U}{\partial y} \right)^2
 
 ---
 
+## FVM Discretization (k–ε Model)
+
+This section describes the **Finite Volume Method (FVM)** discretization for the **k–ε turbulence model**. In FVM, the governing equations are integrated over finite control volumes, and the domain is discretized into several such control volumes. This converts the governing differential equations into a system of linear algebraic equations.
+
+The system is solved using the **Gauss–Seidel method with under-relaxation**. A central difference scheme is applied for all diffusive terms, while nonlinear source terms are linearized. Superscripts (e.g., `old`) denote values from the previous iteration, which are used for decoupling and source term linearization.
+
+We follow standard FVM notation, where subscripts **P, N, S** refer to parent, north, and south nodes, and **S<sub>u</sub>, S<sub>p</sub>** denote source terms.
+
+###  Discretized *u*-momentum equation
+
+$$
+a_{P_u} u_P = a_{N_u} u_N + a_{S_u} u_S + S_{u_u}
+$$
+
+where
+
+$$
+a_{N_u} = \frac{\nu + \nu_t^{old}}{\Delta y_n}, \quad 
+a_{S_u} = \frac{\nu + \nu_t^{old}}{\Delta y_s}, \quad 
+a_{P_u} = a_{N_u} + a_{S_u}, \quad 
+S_{u_u} = \frac{\Delta y}{\rho}
+$$
+
+###  Discretized *k*-equation
+
+$$
+(a_{P_k} + S_{P_k}) k_P = a_{N_k} k_N + a_{S_k} k_S + S_{u_k}
+$$
+
+where
+
+$$
+a_{N_k} = \frac{\nu + \nu_t^{old}/\sigma_k}{\Delta y_n}, \quad 
+a_{S_k} = \frac{\nu + \nu_t^{old}/\sigma_k}{\Delta y_s}, \quad 
+a_{P_k} = a_{N_k} + a_{S_k}, \quad 
+S_{P_k} = \frac{\varepsilon^{old}}{k^{old}}
+$$
+
+and
+
+$$
+S_{u_k} = P_k \Delta y, \quad 
+P_k = \nu_t^{old} \left( \frac{\partial u}{\partial y} \right)_p^2
+$$
+
+###  Discretized *ε*-equation
+
+$$
+(a_{P_\varepsilon} + S_{P_\varepsilon}) \varepsilon_P = a_{N_\varepsilon} \varepsilon_N + a_{S_\varepsilon} \varepsilon_S + S_{u_\varepsilon}
+$$
+
+where
+
+$$
+a_{N_\varepsilon} = \frac{\nu + \nu_t^{old}/\sigma_\varepsilon}{\Delta y_n}, \quad 
+a_{S_\varepsilon} = \frac{\nu + \nu_t^{old}/\sigma_\varepsilon}{\Delta y_s}, \quad 
+a_{P_\varepsilon} = a_{N_\varepsilon} + a_{S_\varepsilon}, \quad 
+S_{P_\varepsilon} = \frac{\varepsilon^{old}}{k^{old}}
+$$
+
+and
+
+$$
+S_{u_\varepsilon} = P_\varepsilon \Delta y, \quad 
+P_\varepsilon = \nu_t^{old} \left( \frac{u_N^{old} - u_S^{old}}{\Delta y_N + \Delta y_S} \right)^2
+$$
+
+---
+
+## FVM Discretization (k–ω Model)
+
+This section outlines the **Finite Volume Method (FVM)** discretization for the **k–ω turbulence model**. Similar to the k–ε model, the governing equations are integrated over finite control volumes, transforming them into algebraic equations that can be solved iteratively.
+
+* **Central difference scheme** is used for diffusive terms.
+* **Source terms** are linearized.
+* Superscripts (e.g., `old`) denote values from the previous iteration.
+* Subscripts **P, N, S** represent the parent, north, and south nodes.
+* Source and production terms are represented by **S<sub>u</sub>** and **S<sub>p</sub>**.
+
+###  Discretized *k*-equation
+
+$$
+(a_{P_k} + S_{P_k}) k_P = a_{N_k} k_N + a_{S_k} k_S + S_{u_k}
+$$
+
+where
+
+$$
+a_{N_k} = \frac{\nu + \nu_t^{old}/\sigma_k}{\Delta y_n}, \quad 
+a_{S_k} = \frac{\nu + \nu_t^{old}/\sigma_k}{\Delta y_s}, \quad 
+a_{P_k} = a_{N_k} + a_{S_k}, \quad 
+S_{P_k} = \beta^* \, \omega^{old}
+$$
+
+and
+
+$$
+S_{u_k} = P_k \Delta y, \quad 
+P_k = \nu_t^{old} \left( \frac{\partial u}{\partial y} \right)_p^2
+$$
+
+###  Discretized *ω*-equation
+
+$$
+(a_{P_\omega} + S_{P_\omega}) \omega_P = a_{N_\omega} \omega_N + a_{S_\omega} \omega_S + S_{u_\omega}
+$$
+
+where
+
+$$
+a_{N_\omega} = \frac{\nu + \nu_t^{old}/\sigma_\omega}{\Delta y_n}, \quad 
+a_{S_\omega} = \frac{\nu + \nu_t^{old}/\sigma_\omega}{\Delta y_s}, \quad 
+a_{P_\omega} = a_{N_\omega} + a_{S_\omega}, \quad 
+S_{P_\omega} = \beta \, \omega^{old}
+$$
+
+and
+
+$$
+S_{u_\omega} = \alpha \, \frac{\omega^{old}}{k^{old}} P_k \Delta y
+$$
+
+---
 
 
 
