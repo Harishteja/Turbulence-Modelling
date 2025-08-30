@@ -1,2 +1,2 @@
 # Turbulence-Modelling
-This repository contains Trubulence Models like K-Epsilon, K-Epsilon -RNG, K-Omega, RSM (Reynolds Stress Model).
+This repository contains implementations of turbulence models, including eddy-viscosity models (k–ε, k–ε RNG, k–ω) and the Reynolds Stress Model (RSM).
